@@ -16,11 +16,12 @@ class ResturantOwner extends Migration {
 		{
 			$table->increments('id');
             $table->string('owner_name');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->integer('branch');
             $table->string('password');
             $table->integer('multiple');
 			$table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 
