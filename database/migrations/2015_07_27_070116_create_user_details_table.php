@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserDetail extends Migration {
+class CreateUserDetailsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class UserDetail extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_detail', function(Blueprint $table)
+		Schema::create('user_details', function(Blueprint $table)
 		{
-			$table->increments('id');
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('f_name');
             $table->string('m_name');
@@ -25,7 +25,7 @@ class UserDetail extends Migration {
             $table->text('description');
             $table->text('picture');
             $table->text('location');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
@@ -36,7 +36,7 @@ class UserDetail extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_detail');
+		Schema::drop('user_details');
 	}
 
 }

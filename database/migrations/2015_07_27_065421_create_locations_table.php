@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SKeyword extends Migration {
+class CreateLocationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class SKeyword extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('s_keyword', function(Blueprint $table)
+		Schema::create('locations', function(Blueprint $table)
 		{
-			$table->increments('skeyword_id');
-            $table->string('skeyword_name');
-            $table->text('skeyword_description');
+            $table->increments('id');
+            $table->text('keyword');
+            $table->string('l_name');
 		});
 	}
 
@@ -27,7 +27,7 @@ class SKeyword extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('s_keyword');
+		Schema::drop('locations');
 	}
 
 }

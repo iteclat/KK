@@ -16,8 +16,8 @@ class RLocation extends Migration {
 		{
 			$table->integer('rd_id')->unsigned();
 			$table->integer('loc_id')->unsigned();
-            $table->foreign('rd_id')->references('id')->on('resturant_detail');
-            $table->foreign('loc_id')->references('id')->on('location');
+            $table->foreign('rd_id')->references('id')->on('restaurant_details')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('loc_id')->references('id')->on('locations')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

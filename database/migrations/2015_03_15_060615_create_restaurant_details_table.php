@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ResturantDetail extends Migration {
+class CreateRestaurantDetailsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,9 @@ class ResturantDetail extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('resturant_detail', function(Blueprint $table)
+		Schema::create('restaurant_details', function(Blueprint $table)
 		{
-			$table->increments('id');
+            $table->increments('id');
             $table->integer('r_id')->unsigned();
             $table->string('name')->unique();
             $table->string('gps');
@@ -34,8 +34,8 @@ class ResturantDetail extends Migration {
             $table->string('type');
             $table->text('slug');
             $table->integer('status');
-			$table->timestamps();
-            $table->foreign('r_id')->references('id')->on('resturant_owner');
+            $table->timestamps();
+            $table->foreign('r_id')->references('id')->on('restaurant_owners')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
@@ -46,7 +46,7 @@ class ResturantDetail extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('resturant_detail');
+		Schema::drop('restaurant_details');
 	}
 
 }

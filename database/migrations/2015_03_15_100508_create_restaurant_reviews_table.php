@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ResturantReview extends Migration {
+class CreateRestaurantReviewsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,17 @@ class ResturantReview extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('resturant_review', function(Blueprint $table)
+		Schema::create('restaurant_reviews', function(Blueprint $table)
 		{
-			$table->increments('id');
+           $table->increments('id');
             $table->integer('rd_id')->unsigned();
             $table->integer('u_id');
             $table->text('review_description');
             $table->integer('rating');
             $table->integer('status');
-			$table->timestamps();
-            $table->foreign('rd_id')->references('id')->on('resturant_detail');
-
-    });
+            $table->timestamps();
+            $table->foreign('rd_id')->references('id')->on('restaurant_details')->onUpdate('cascade')->onDelete('cascade');
+		});
 	}
 
 	/**
@@ -33,7 +32,7 @@ class ResturantReview extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('resturant_review');
+		Schema::drop('restaurant_reviews');
 	}
 
 }

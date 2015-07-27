@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ResturantOwner extends Migration {
+class CreateRestaurantOwnersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,15 @@ class ResturantOwner extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('resturant_owner', function(Blueprint $table)
+		Schema::create('restaurant_owners', function(Blueprint $table)
 		{
-			$table->increments('id');
+            $table->increments('id');
             $table->string('owner_name');
             $table->integer('user_id')->unsigned();
             $table->integer('branch');
-            $table->string('password');
             $table->integer('multiple');
-			$table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 
@@ -32,7 +31,7 @@ class ResturantOwner extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('resturant_owner');
+		Schema::drop('restaurant_owners');
 	}
 
 }
