@@ -6,10 +6,12 @@ var app = angular.module('myApp',[],function($interpolateProvider) {
     $interpolateProvider.endSymbol('%>');
 });
 
-app.controller('myCtrl',function($scope){
+app.controller('myCtrl',function($scope,$http){
     var ownerName = $scope.ownerName;
     var branch = $scope.branch;
     var multiple = $scope.multiple;
+
+    $http.post('')
 });
 
 $(document).ready(function(){
