@@ -25,9 +25,8 @@
 //});
 //Route::get('/', 'WelcomeController@index');
 Route::get('/restaurant_owner', 'RestaurantOwnerController@index');
-
 Route::get('home', 'HomeController@index');
-
+Route::resource('r_owner','RestaurantOwnerController');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
