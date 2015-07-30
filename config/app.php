@@ -135,8 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-//        'MicheleAngioni\Entrust\EntrustServiceProvider',
-        'Zizaco\Entrust\EntrustServiceProvider',
+	        'Zizaco\Entrust\EntrustServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -194,10 +193,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-//        'Entrust' => 'MicheleAngioni\Entrust\EntrustFacade',
-        'Entrust' => 'Zizaco\Entrust\EntrustFacade',
-        'Form'  => 'Illuminate\Html\FormFacade',
-        'HTML'  => 'Illuminate\Html\HtmlFacade'
+	        'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+	        'Form'  => 'Illuminate\Html\FormFacade',
+	        'HTML'  => 'Illuminate\Html\HtmlFacade'
 	],
 
 ];
