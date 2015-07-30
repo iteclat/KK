@@ -23,7 +23,33 @@
 //    $admins->attachPermission($editUsers);
 //
 //});
-//Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index');
+Route::get('/user/create',function(){
+	$user=new App\User();
+	if($user){
+		$user->username='sujan';
+		$user->password=bcrypt('nepal123');
+		$user->status=1;
+		$user->email='prajapati_sujan1@hotmail.com';
+		$user->recover=0;
+		$user->social=0;
+		if($user->save()){
+			echo 'Successfully Insereted';		
+}	
+	}
+});
+Route::get('/users/roles',function(){
+	if(Auth::check()){
+		$role=new App\Role();		
+		$user=App\User::find(Auth::id());		
+		if($user->hasRole('Author')){
+			echo 'Author';		
+		}		
+	}
+	else{
+		Auth::loginUsingId(1);
+	}
+});
 Route::get('/restaurant_owner', 'RestaurantOwnerController@index');
 
 Route::get('home', 'HomeController@index');
