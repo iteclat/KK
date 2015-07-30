@@ -38,18 +38,7 @@ Route::get('/user/create',function(){
 }	
 	}
 });
-Route::get('/users/roles',function(){
-	if(Auth::check()){
-		$role=new App\Role();		
-		$user=App\User::find(Auth::id());		
-		if($user->hasRole('Author')){
-			echo 'Author';		
-		}		
-	}
-	else{
-		Auth::loginUsingId(1);
-	}
-});
+Route::resource('/users/','UserController');
 Route::get('/restaurant_owner', 'RestaurantOwnerController@index');
 
 Route::get('home', 'HomeController@index');
