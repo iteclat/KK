@@ -1,4 +1,3 @@
-@yield('scripts')
 <!-- jQuery -->
 <script src="{{asset("js/jquery.min.js")}}"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -7,6 +6,10 @@
 <script src="{{asset("js/metisMenu.min.js")}}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{asset("js/sb-admin-2.js")}}"></script>
+<script src="{{asset("js/angular.min.js")}}"></script>
+<script src="{{asset("js/angular-resource.min.js")}}"></script>
+<script src="{{asset("js/angular-route.min.js")}}"></script>
+@yield('scripts')
 <script>
     //store the element
     var $cache = $('.rd-display');

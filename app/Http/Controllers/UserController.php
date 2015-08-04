@@ -4,8 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
-use Illuminate\Http\Request;
-
 class UserController extends Controller {
 
 	private $user;
@@ -20,7 +18,7 @@ class UserController extends Controller {
 	public function index()
 	{
 		//
-
+		return User::all();
 	}
 
 	/**
@@ -31,6 +29,7 @@ class UserController extends Controller {
 	public function create()
 	{
 		//
+		echo 'ok';
 	}
 
 	/**
@@ -40,8 +39,18 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		if(\Request::json()){
+			$input=\Input::all();
+			$this->user->username=$input['username'];
+			$this->user->password=bcrypt($input['password']);
+			$this->user->email=$input['email'];
+			if($this->user->save()){
+				return 1;
+			}
+		}
 	}
+
+
 
 	/**
 	 * Display the specified resource.
@@ -52,6 +61,8 @@ class UserController extends Controller {
 	public function show($id)
 	{
 		//
+		$user=$this->user->find($id);
+		return $user;
 	}
 
 	/**
@@ -74,6 +85,16 @@ class UserController extends Controller {
 	public function update($id)
 	{
 		//
+		if(\Request::json()){
+			$user=$this->user->find($id);
+			$user->username=\Input::get('username');
+			$user->email=\Input::get('email');
+			$user->password=bcrypt(\Input::get('password'));
+			$user->email=\Input::get('email');
+			if($user->save()){
+				return 1;
+			}
+		}
 	}
 
 	/**
@@ -85,6 +106,10 @@ class UserController extends Controller {
 	public function destroy($id)
 	{
 		//
+		$user=$this->user->find($id);
+		if($user->delete()){
+			return 1;
+		}
 	}
 
 }

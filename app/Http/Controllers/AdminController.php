@@ -3,15 +3,18 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller {
 
     private $admin;
-
-    public function __construct(User $user){
+	private $roles;
+    public function __construct(User $user,Role $role){
         $this->user=$user;
-    }
+    	$this->roles=$role;
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -21,7 +24,7 @@ class AdminController extends Controller {
 	{
 		//
         $users=$this->user->all();
-        return view('')->with('Users',$users);
+        return view('admin.user.index')->with('Users',$users);
 	}
 
 	/**
@@ -32,6 +35,8 @@ class AdminController extends Controller {
 	public function create()
 	{
 		//
+		$roles=$this->roles->all();
+		return view('admin.user.create')->with('roles',$roles);
 	}
 
 	/**
@@ -42,6 +47,7 @@ class AdminController extends Controller {
 	public function store()
 	{
 		//
+
 	}
 
 	/**
@@ -53,6 +59,7 @@ class AdminController extends Controller {
 	public function show($id)
 	{
 		//
+		echo $id;
 	}
 
 	/**

@@ -8,6 +8,7 @@
             <div class="row rd-cont-area">
                 @yield('page')
             </div>
+            <!--  -->
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->

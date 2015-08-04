@@ -63,7 +63,6 @@
                         </tr>
                         </tbody>
                     </table>
-
                     <nav>
                         <ul class="pagination">
                             <li>

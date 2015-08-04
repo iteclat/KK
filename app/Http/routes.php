@@ -24,21 +24,9 @@
 //
 //});
 Route::get('/', 'WelcomeController@index');
-Route::get('/user/create',function(){
-	$user=new App\User();
-	if($user){
-		$user->username='sujan';
-		$user->password=bcrypt('nepal123');
-		$user->status=1;
-		$user->email='prajapati_sujan1@hotmail.com';
-		$user->recover=0;
-		$user->social=0;
-		if($user->save()){
-			echo 'Successfully Insereted';		
-}	
-	}
-});
-Route::resource('/users/','UserController');
+//Route::resource('/users','AdminController');
+Route::resource('/users/roles/','RoleController');
+Route::resource('/user','UserController');
 Route::get('/restaurant_owner', 'RestaurantOwnerController@index');
 
 Route::get('home', 'HomeController@index');
